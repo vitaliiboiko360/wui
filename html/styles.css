@@ -1,0 +1,27 @@
+
+p.year-title {
+    color: black;
+    font-size: 22pt;
+    font-weight: bold;
+    margin-top: 6pt;
+    margin-bottom: 6pt;
+}
+
+p.month-title {
+    font-size: 14pt;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+table.date-grid td {
+    width: 21pt;
+    display: inline-block;
+
+}
+
+#days-title {
+    font-size: 10pt;
+    font-weight: bold;
+    line-height: 28pt;
+}
