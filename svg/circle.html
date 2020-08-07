@@ -4,9 +4,26 @@
 <h1>My first SVG</h1>
 
 <svg width="100" height="100">
-  <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
+  <circle id="circle" cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" />
   <circle cx="55" cy="55" r="40" stroke="green" stroke-width="4" fill="yellow" />
 </svg>
+<script>
+  (function(){
+    var c = document.getElementById("circle");
+    var cx = 0;
+    const var maxWidth = 100;
+    
+    setInterval(fucntion(){
+      cx = cx + 10;
+      if (cx > maxWidth)
+      {
+        cx = maxWidth - cx;
+      }
 
+      c.setAttribute("cx", cx);
+    }, 1000);
+   
+  })();
+</script>
 </body>
 </html>
