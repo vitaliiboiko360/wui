@@ -1,4 +1,3 @@
-var sys = require('sys');
 var filename = process.argv[2];
 
 if(!filename)
@@ -6,17 +5,22 @@ if(!filename)
 
 const { spawn } = require('child_process');
 
-var tail = process.createChildProcess("tail", ["-f", filename]);
-sys.puts("start tailing");
+var tail = spawn("tail", ["-f", filename]);
+console.log("start tailing");
 
 tail.addListener("output", function(data) {
-    sys.puts(data);
+    console.log(data);
 });
 
 var http = require("http");
-http.createServer(function(req, res) {
-    res.sendHeader(200, {"Content-Type": "text/plain"});
+var server = http.createServer(function(req, res) {
+    res.setHeader('Content-Type', 'text/plain');
     tail.addListener("output", function(data) {
-        res.sendBody(data);
+        res.write(data);
+        res.end();
     });
-}).listen(8000);
+});
+
+const host = '192.168.129.131';
+const port = 8080;
+server.listen(port, host);
