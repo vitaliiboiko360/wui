@@ -5,15 +5,7 @@ const hostname = '192.168.129.131';
 const port = 8080;
 
 const server = http.createServer((req, res) => {
-    res.statusCode = 200;
-    res.setHeader('Content-Type', 'text/html');
-    
-    fs.readFile('./svg/circle.html', (err, data) => {
-        if (err) throw err;
-        res.end(data);
-      });
-
-    
+    onRequest(req, res);    
 });
 
 server.listen(port, hostname, ()=> {
