@@ -1,7 +1,7 @@
 var fs = require('fs');
 var http = require('http');
 
-function fsReadFile(fileName, response) {
+function serveFileToResponse(fileName, response) {
     fs.readFile(__dirname + "/" + fileName, function(err, data) {
         if (err) {
             response.writeHeader(404);
@@ -15,11 +15,11 @@ function fsReadFile(fileName, response) {
 
 function router (request, response) {
     if(request.url == "/index.html" || request.url == "/") {
-        fsReadFile("index.html", response);
+        serveFileToResponse("index.html", response);
     }
 
     if(request.url == "/script.js") {
-        fsReadFile("script.js", response)
+        serveFileToResponse("script.js", response)
     }
 }
 
