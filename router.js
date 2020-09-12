@@ -1,3 +1,6 @@
+'use strict';
+
+const { strict } = require('assert');
 var fs = require('fs');
 var http = require('http');
 
